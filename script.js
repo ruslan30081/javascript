@@ -25,11 +25,11 @@ console.log(`Процент отката посреднику за работу:
 // Усложненное задание
 
 // задание 1
-let num = 266219;
+const num = 266219;
 
 // задание 2
 
-let a = 123;
+const a = 123;
 let product = 1;
 
 for (let i = 0; i < a.toString().length; i++) {
