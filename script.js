@@ -49,7 +49,7 @@ console.log(parseInt(pow.toString()[0]) + " " + parseInt(pow.toString()[1])); //
 //========================================================================================================================================================
 // урок #3
 
-let title = prompt("Введите название проекта");
+const title = prompt("Введите название проекта");
 console.log(title);
 
 let screenType;
@@ -78,7 +78,7 @@ while (true) {
   }
 }
 
-let adaptive = confirm("Нужен ли адаптив на сайте?");
+const adaptive = confirm("Нужен ли адаптив на сайте?");
 
 let service1, servicePrice1, service2, servicePrice2;
 
@@ -106,10 +106,10 @@ while (true) {
   alert("Пожалуйста, введите стоимость услуги");
 }
 
-let fullPrice = parseInt(screenPrice) + parseInt(servicePrice1) + parseInt(servicePrice2);
+const fullPrice = parseInt(screenPrice) + parseInt(servicePrice1) + parseInt(servicePrice2);
 console.log("fullPrice " + fullPrice);
 
-let servicePercentPrice = Math.ceil(fullPrice - (fullPrice * rollback / 100));
+const servicePercentPrice = Math.ceil(fullPrice - (fullPrice * rollback / 100));
 console.log("servicePercentPrice " + servicePercentPrice);
 
 
@@ -124,48 +124,15 @@ if (fullPrice === 0) {
   console.log("Итоговая стоимость: 30000 рублей");
 } else if (fullPrice > 30000) {
   console.log("Даем скидку в 10%");
-  let discount = fullPrice * 0.1;
-  let finalPrice = fullPrice - discount;
+  const discount = fullPrice * 0.1;
+  const finalPrice = fullPrice - discount;
   console.log("Итоговая стоимость: " + finalPrice);
 } else if (fullPrice > 15000 && fullPrice < 30000) {
   console.log("Даем скидку в 5%");
-  let discount = fullPrice * 0.05;
-  let finalPrice = fullPrice - discount;
+  const discount = fullPrice * 0.05;
+  const finalPrice = fullPrice - discount;
   console.log("Итоговая стоимость: " + finalPrice);
 } else {
   console.log("Скидка не предусмотрена");
   console.log("Итоговая стоимость: " + fullPrice);
 }
-
-//========================================================================================================================================================
-// усложненноу задание 3 урока
-
-const lang = 'en'; //ru или 'en'
-
-if (lang === 'ru') {
-  console.log('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
-} else if (lang === 'en') {
-  console.log('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
-}
-
-
-
-switch (lang) {
-  case 'ru':
-    console.log('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
-    break;
-  case 'en':
-    console.log('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
-    break;
-}
-
-
-let daysOfWeek = [
-  ['ru', ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']],
-  ['en', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']]
-];
-
-console.log(daysOfWeek[lang === 'ru' ? 0 : 1][1]);
-
-let namePerson = 'Александр'; // или 'Александр' или любое другое значение
-console.log(namePerson === 'Артем' ? 'директор' : namePerson === 'Александр' ? 'преподаватель' : 'студент');
