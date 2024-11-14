@@ -1,58 +1,6 @@
-// const title = "Название проекта";
-// const screens = "Простые, Сложные, Интерактивные";
-// const screenPrice = 1000;
-const rollback = 50;
-// const fullPrice = 90000;
-// const adaptive = true;
-
-
-// console.log(typeof title); 
-// console.log(typeof fullPrice); 
-// console.log(typeof adaptive); 
-
-// console.log(screens.length); 
-
-// console.log(`Стоимость верстки экранов (${screenPrice}) рублей/ долларов/гривен/юани`);
-// console.log(`Стоимость разработки сайта (${fullPrice}) рублей/ долларов/гривен/юани`);
-
-// let screensArray = screens.toLowerCase().split(',');
-// // console.log(screensArray);
-
-// let rollbackAmount = fullPrice * (rollback / 100); 
-// console.log(`Процент отката посреднику за работу: ${rollbackAmount}`);
-
-
-// Усложненное задание
-
-// задание 1
-const num = 266219;
-
-// задание 2
-
-const a = 123;
-let product = 1;
-
-for (let i = 0; i < a.toString().length; i++) {
-  let digit = parseInt(a.toString()[i]); // преобразуем строку в число
-  product *= digit;
-}
-
-console.log(product); // 6
-
-// задание 3
-let pow = product ** 3;
-console.log(pow); //216
-
-// задание 4
-console.log(parseInt(pow.toString()[0]) + " " + parseInt(pow.toString()[1])); // 6
-
-//========================================================================================================================================================
-// урок #3
-
 const title = prompt("Введите название проекта");
-console.log(title);
-
-let screenType;
+let service1, servicePrice1, service2, servicePrice2, screenType, screenPrice;
+const rollback = 50;
 
 while (true) {
   screenType = prompt("Выберите тип экрана:", ["Простые", "Сложные", "Интерактивные"]);
@@ -65,8 +13,6 @@ while (true) {
   }
 }
 
-
-let screenPrice;
 while (true) {
   screenPrice = prompt("Сколько будет стоить данная работа?");
 
@@ -77,11 +23,6 @@ while (true) {
     alert("Введите число");
   }
 }
-
-const adaptive = confirm("Нужен ли адаптив на сайте?");
-
-let service1, servicePrice1, service2, servicePrice2;
-
 while (true) {
   service1 = prompt("Какой дополнительный тип услуги нужен?");
   if (service1 !== "") break;
@@ -106,33 +47,71 @@ while (true) {
   alert("Пожалуйста, введите стоимость услуги");
 }
 
-const fullPrice = parseInt(screenPrice) + parseInt(servicePrice1) + parseInt(servicePrice2);
-console.log("fullPrice " + fullPrice);
 
-const servicePercentPrice = Math.ceil(fullPrice - (fullPrice * rollback / 100));
-console.log("servicePercentPrice " + servicePercentPrice);
+const adaptive = confirm("Нужен ли адаптив на сайте?");
 
 
-if (fullPrice === 0) {
-  console.log("Стоимость работы составляет 0 рублей");
-  console.log("Итоговая стоимость: 0 рублей");
-} else if (fullPrice === 15000) {
-  console.log("Стоимость работы составляет 15000 рублей");
-  console.log("Итоговая стоимость: 15000 рублей");
-} else if (fullPrice === 30000) {
-  console.log("Стоимость работы составляет 30000 рублей");
-  console.log("Итоговая стоимость: 30000 рублей");
-} else if (fullPrice > 30000) {
-  console.log("Даем скидку в 10%");
-  const discount = fullPrice * 0.1;
-  const finalPrice = fullPrice - discount;
-  console.log("Итоговая стоимость: " + finalPrice);
-} else if (fullPrice > 15000 && fullPrice < 30000) {
-  console.log("Даем скидку в 5%");
-  const discount = fullPrice * 0.05;
-  const finalPrice = fullPrice - discount;
-  console.log("Итоговая стоимость: " + finalPrice);
-} else {
-  console.log("Скидка не предусмотрена");
-  console.log("Итоговая стоимость: " + fullPrice);
+
+const allServicePrices = function getAllServicePrices(a, b) {
+  return parseInt(a) + parseInt(b);
 }
+const fullPrice = function getFullPrice(screenPrice, allServicePrices) {
+  return parseInt(screenPrice) + parseInt(allServicePrices);
+}
+
+
+
+function getTitle(title) {
+  title = title.toLowerCase();
+  title = title.replace(/^\s+/, "");
+  title = title[0].toUpperCase() + title.slice(1);
+  return title;
+}
+
+let servicePercentPrice = function getServicePercentPrices(itemFullPrice, rollback) {
+  return Math.ceil(itemFullPrice - (itemFullPrice * rollback / 100));
+}
+
+
+const showTypeOf = function(price) {
+  if (price === 0) {
+    console.log("Стоимость работы составляет 0 рублей");
+    console.log("Итоговая стоимость: 0 рублей");
+  } else if (price === 15000) {
+    console.log("Стоимость работы составляет 15000 рублей");
+    console.log("Итоговая стоимость: 15000 рублей");
+  } else if (price === 30000) {
+    console.log("Стоимость работы составляет 30000 рублей");
+    console.log("Итоговая стоимость: 30000 рублей");
+  } else if (price > 30000) {
+    console.log("Даем скидку в 10%");
+    const discount = price * 0.1;
+    const finalPrice = price - discount;
+    console.log("Итоговая стоимость: " + finalPrice);
+  } else if (price > 15000 && price < 30000) {
+    console.log("Даем скидку в 5%");
+    const discount = price * 0.05;
+    const finalPrice = price - discount;
+    console.log("Итоговая стоимость: " + finalPrice);
+  } else {
+    console.log("Скидка не предусмотрена");
+    console.log("Итоговая стоимость: " + price);
+  }
+}
+
+let itemTitle = getTitle(title);
+console.log(itemTitle);
+
+let result = allServicePrices(servicePrice1, servicePrice2);
+console.log(result);
+
+let itemFullPrice = fullPrice(screenPrice, result);
+console.log(itemFullPrice);
+
+let itemServicePercentPrice = servicePercentPrice(itemFullPrice, rollback);
+console.log("стоимость за вычетом процента отката посреднику " + itemServicePercentPrice);
+
+let itemAllServicePrices = allServicePrices(servicePrice1, servicePrice2)
+console.log(itemAllServicePrices);
+
+let itemShowTypeOf = showTypeOf(itemFullPrice);
