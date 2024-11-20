@@ -2,50 +2,59 @@ const title = prompt("Введите название проекта");
 let service1, servicePrice1, service2, servicePrice2, screenType, screenPrice;
 const rollback = 50;
 
-while (true) {
+do {
   screenType = prompt("Выберите тип экрана:", ["Простые", "Сложные", "Интерактивные"]);
-
   if (screenType === "Простые" || screenType === "Сложные" || screenType === "Интерактивные") {
     console.log("screenType " + screenType);
-    break;
   } else {
     alert("Неправильный выбор");
   }
-}
+} while (screenType !== "Простые" && screenType !== "Сложные" && screenType !== "Интерактивные");
 
-while (true) {
+do {
   screenPrice = prompt("Сколько будет стоить данная работа?");
-
   if (!isNaN(parseInt(screenPrice))) {
     console.log("screenPrice " + parseInt(screenPrice));
-    break;
   } else {
     alert("Введите число");
   }
-}
-while (true) {
+} while (isNaN(parseInt(screenPrice)));
+
+do {
   service1 = prompt("Какой дополнительный тип услуги нужен?");
-  if (service1 !== "") break;
-  alert("Пожалуйста, введите название услуги");
-}
+  if (service1 !== "") {
+    console.log("service1 " + service1);
+  } else {
+    alert("Пожалуйста, введите название услуги");
+  }
+} while (service1 === "");
 
-while (true) {
+do {
   servicePrice1 = prompt("Сколько это будет стоить?");
-  if (!isNaN(parseInt(servicePrice1))) break;
-  alert("Пожалуйста, введите стоимость услуги");
-}
+  if (!isNaN(parseInt(servicePrice1))) {
+    console.log("servicePrice1 " + parseInt(servicePrice1));
+  } else {
+    alert("Пожалуйста, введите стоимость услуги");
+  }
+} while (isNaN(parseInt(servicePrice1)));
 
-while (true) {
+do {
   service2 = prompt("Какой дополнительный тип услуги нужен?");
-  if (service2 !== "") break;
-  alert("Пожалуйста, введите название услуги");
-}
+  if (service2 !== "") {
+    console.log("service2 " + service2);
+  } else {
+    alert("Пожалуйста, введите название услуги");
+  }
+} while (service2 === "");
 
-while (true) {
+do {
   servicePrice2 = prompt("Сколько это будет стоить?");
-  if (!isNaN(parseInt(servicePrice2))) break;
-  alert("Пожалуйста, введите стоимость услуги");
-}
+  if (!isNaN(parseInt(servicePrice2))) {
+    console.log("servicePrice2 " + parseInt(servicePrice2));
+  } else {
+    alert("Пожалуйста, введите стоимость услуги");
+  }
+} while (isNaN(parseInt(servicePrice2)));
 
 
 const adaptive = confirm("Нужен ли адаптив на сайте?");
