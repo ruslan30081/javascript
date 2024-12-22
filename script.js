@@ -1,39 +1,34 @@
-// Создаем функцию для игры с использованием замыкания и рекурсии
-(function startGame() {
-  // Загадываем случайное число от 1 до 100 и сохраняем его в замыкании
+function startGame() {
   const secretNumber = Math.floor(Math.random() * 100) + 1;
 
-  // Функция для рекурсивной проверки числа
   function guessNumber() {
-      const userInput = prompt("Угадай число от 1 до 100");
+      let userInput = prompt("Угадай число от 1 до 100");
 
-      // Проверяем, нажал ли пользователь "Отмена"
       if (userInput === null) {
           alert("Игра окончена");
           return;
       }
 
-      const guessedNumber = Number(userInput);
-
-      // Проверяем, ввел ли пользователь число
-      if (isNaN(guessedNumber)) {
+      if (isNaN(userInput) || userInput.trim() === "") {
           alert("Введи число!");
-          guessNumber(); // Рекурсивный вызов
+          guessNumber();
           return;
       }
 
-      // Сравниваем числа
-      if (guessedNumber > secretNumber) {
+      userInput = Number(userInput);
+
+      if (userInput > secretNumber) {
           alert("Загаданное число меньше");
-          guessNumber(); // Рекурсивный вызов
-      } else if (guessedNumber < secretNumber) {
+          guessNumber();
+      } else if (userInput < secretNumber) {
           alert("Загаданное число больше");
-          guessNumber(); // Рекурсивный вызов
+          guessNumber();
       } else {
           alert("Поздравляю, Вы угадали!!!");
       }
   }
 
-  // Запускаем игру
   guessNumber();
-})();
+}
+
+startGame();
