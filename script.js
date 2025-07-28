@@ -1,34 +1,50 @@
-function startGame() {
-  const secretNumber = Math.floor(Math.random() * 100) + 1;
+const appData = {
+    secretNumber: 0,
 
-  function guessNumber() {
-      let userInput = prompt("Угадай число от 1 до 100");
+    start() {
+        this.secretNumber = Math.floor(Math.random() * 100) + 1;
+        this.asking();
+        this.logger();
+    },
 
-      if (userInput === null) {
-          alert("Игра окончена");
-          return;
-      }
+    asking() {
+        let userInput = prompt("Угадай число от 1 до 100");
 
-      if (isNaN(userInput) || userInput.trim() === "") {
-          alert("Введи число!");
-          guessNumber();
-          return;
-      }
+        if (userInput === null) {
+            alert("Игра окончена");
+            return;
+        }
 
-      userInput = Number(userInput);
+        if (isNaN(userInput) || userInput.trim() === "") {
+            alert("Введи число!");
+            this.asking();
+            return;
+        }
 
-      if (userInput > secretNumber) {
-          alert("Загаданное число меньше");
-          guessNumber();
-      } else if (userInput < secretNumber) {
-          alert("Загаданное число больше");
-          guessNumber();
-      } else {
-          alert("Поздравляю, Вы угадали!!!");
-      }
-  }
+        userInput = Number(userInput);
 
-  guessNumber();
-}
+        if (userInput > this.secretNumber) {
+            alert("Загаданное число меньше");
+            this.asking();
+        } else if (userInput < this.secretNumber) {
+            alert("Загаданное число больше");
+            this.asking();
+        } else {
+            alert("Поздравляю, Вы угадали!!!");
+        }
+    },
 
-startGame();
+    logger() {
+        console.log("=== Информация об объекте appData ===");
+        for (let key in this) {
+            if (typeof this[key] === 'function') {
+                console.log(`Метод: ${key}`);
+            } else {
+                console.log(`Свойство: ${key} = ${this[key]}`);
+            }
+        }
+        console.log("=== Конец информации ===");
+    }
+};
+
+appData.start();
