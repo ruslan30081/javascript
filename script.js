@@ -13,6 +13,30 @@ const appData = {
     itemServicePercentPrice: 0,
     itemAllServicePrices: 0,
 
+
+    start() {
+        this.asking();
+
+        const itemTitle = this.getTitle(this.title);
+        console.log(itemTitle);
+
+        this.result = this.getAllServicePrices(this.servicePrice1, this.servicePrice2);
+        console.log(this.result);
+
+        this.itemFullPrice = this.getFullPrice(this.screenPrice, this.result);
+        console.log(this.itemFullPrice);
+
+        this.itemServicePercentPrice = this.getServicePercentPrices(this.itemFullPrice, this.rollback);
+        console.log("стоимость за вычетом процента отката посреднику " + this.itemServicePercentPrice);
+
+        this.itemAllServicePrices = this.getAllServicePrices(this.servicePrice1, this.servicePrice2);
+        console.log(this.itemAllServicePrices);
+
+        this.showTypeOf(this.itemFullPrice);
+
+        this.logger();
+    },
+
     asking() {
         this.title = prompt("Введите название проекта");
 
@@ -128,30 +152,9 @@ const appData = {
             }
         }
         console.log("=== КОНЕЦ ЛОГИРОВАНИЯ ===");
-    },
-
-    start() {
-        this.asking();
-
-        const itemTitle = this.getTitle(this.title);
-        console.log(itemTitle);
-
-        this.result = this.getAllServicePrices(this.servicePrice1, this.servicePrice2);
-        console.log(this.result);
-
-        this.itemFullPrice = this.getFullPrice(this.screenPrice, this.result);
-        console.log(this.itemFullPrice);
-
-        this.itemServicePercentPrice = this.getServicePercentPrices(this.itemFullPrice, this.rollback);
-        console.log("стоимость за вычетом процента отката посреднику " + this.itemServicePercentPrice);
-
-        this.itemAllServicePrices = this.getAllServicePrices(this.servicePrice1, this.servicePrice2);
-        console.log(this.itemAllServicePrices);
-
-        this.showTypeOf(this.itemFullPrice);
-
-        this.logger();
     }
+
+
 };
 
 appData.start();
